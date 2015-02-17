@@ -176,14 +176,24 @@ abstract class Deploy {
 			// Make sure we're in the right directory
 			chdir( $this->_path);
 
-			// Discard any changes to tracked files since our last deploy
-			exec( 'git reset --hard HEAD', $output );
+      // Clone a new repo into a timestampped directory
+      $timestamp = time();
+      exec( 'git clone git@city-of-murk:bronzehedwick/city-of-murk.git ' . $timestamp );
 
-			// Update the local repository
-			exec( 'git pull ' . $this->_remote . ' ' . $this->_branch, $output );
+      // Change into the new clone
+      chdir( $timestamp );
 
 			// Secure the .git directory
 			echo exec( 'chmod -R og-rx .git' );
+
+      // Build the project
+      exec( 'npm install && gulp build' );
+
+      // Change back to toplevel directory
+      chdir( $this->_path );
+
+      // Symlink to webserver directory
+      exec ( 'unlink html && ln -s ' . $timestamp . ' html' );
 
 			if ( is_callable( $this->_post_deploy ) )
 				call_user_func( $this->_post_deploy );

@@ -30,7 +30,7 @@ $repos = array(
 	'City of Murk' => array(
 		'branch' => 'master',
 		'remote' => 'origin',
-		'path' => '/usr/share/nginx/html'
+		'path' => '/usr/share/nginx'
 	)
 );
 
