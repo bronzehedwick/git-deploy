@@ -27,7 +27,7 @@
  * other configuration you may need to do for the newly deployed code.
  */
 $repos = array(
-	'city-of-murk' => array(
+	'City of Murk' => array(
 		'branch' => 'master',
 		'remote' => 'origin',
 		'path' => '/usr/share/nginx/html'
