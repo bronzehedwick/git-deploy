@@ -27,11 +27,11 @@
  * other configuration you may need to do for the newly deployed code.
  */
 $repos = array(
-	/*'examplerepo' => array(
+	'city-of-murk' => array(
 		'branch' => 'master',
 		'remote' => 'origin',
-		'path' => '/path/to/local/code/'
-	)*/
+		'path' => '/usr/share/nginx/html'
+	)
 );
 
 /**
