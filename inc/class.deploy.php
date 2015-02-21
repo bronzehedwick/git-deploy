@@ -186,8 +186,12 @@ abstract class Deploy {
 			// Secure the .git directory
 			echo exec( 'chmod -R og-rx .git' );
 
+      // Set this as the production environment
+      exec('touch production');
+
       // Build the project
-      exec( 'npm install && gulp build' );
+      exec( 'npm install --production' );
+      exec( 'gulp build 2>&1 > gulp.log' );
 
       // Change back to toplevel directory
       chdir( $this->_path );
